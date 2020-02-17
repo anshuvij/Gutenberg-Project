@@ -39,6 +39,17 @@ class ViewController: UIViewController {
             category = "Fiction"
           case 2:
             category = "Drama"
+        case 3:
+            category = "Humor"
+        case 4:
+        category = "Politics"
+        case 5:
+        category = "Philosophy"
+        case 6:
+        category = "History"
+        case 7:
+            category = "Adventure"
+            
         default:
             category = "Fiction"
         }

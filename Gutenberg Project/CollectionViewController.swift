@@ -28,6 +28,43 @@ class CollectionViewController: UIViewController,UICollectionViewDelegate,UIColl
         
     }
     
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let currentValue = articles[indexPath.row]
+        let formats =  currentValue["formats"] as? Dictionary<String,String>
+        print(formats!["text/html; charset=utf-8"])
+        
+        var stringURL : String?
+        for (key, value) in formats! {
+             print("(\(key),\(value))")
+            if key == "text/html; charset=utf-8"
+            {
+                stringURL = value
+                break;
+            }
+            else if key == "application/pdf"
+            {
+                stringURL = value
+                break;
+            }
+            else if key  == "text/plain; charset=utf-8"
+            {
+                stringURL = value
+                break;
+                
+            }
+            else{
+                
+            }
+            
+        }
+       // for key in formats
+        if let url = URL(string: stringURL!) {
+            UIApplication.shared.open(url)
+        }
+        
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CollectionViewCell
